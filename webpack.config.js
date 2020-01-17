@@ -3,6 +3,9 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const HtmlPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   devtool: 'source-map',
 
@@ -17,12 +20,20 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: '[name]-[hash].js',
+    publicPath: ''
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlPlugin({
+      title: 'GitHub App',
+      template: path.join(__dirname, 'src', 'html', 'template.html')
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name]-[hash].css',
+      chunkFilename: '[id].css'
+    })
   ],
 
   module: {
@@ -38,8 +49,8 @@ module.exports = {
       exclude: /node_modules/,
       include: /src/,
       use: [
-        'style-loader',
-        'raw-loader'
+        MiniCssExtractPlugin.loader,
+        'css-loader'
       ]
     }]
   }
