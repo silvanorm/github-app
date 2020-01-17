@@ -4,32 +4,29 @@ const path = require('path')
 const webpack = require('webpack')
 
 const HtmlPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  devtool: 'source-map',
+  mode: 'production',
 
-  mode: 'development',
-
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    path.join(__dirname, 'src', 'index')
-  ],
+  entry: path.join(__dirname, 'src', 'index'),
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name]-[hash].js',
-    publicPath: ''
+    filename: '[name]-[hash].js'
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin(),
     new HtmlPlugin({
       title: 'GitHub App',
       template: path.join(__dirname, 'src', 'html', 'template.html')
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name]-[hash].css',
+      chunkFilename: '[id].css'
     })
   ],
 
@@ -46,7 +43,7 @@ module.exports = {
       exclude: /node_modules/,
       include: /src/,
       use: [
-        'style-loader',
+        MiniCssExtractPlugin.loader,
         'css-loader'
       ]
     }]
