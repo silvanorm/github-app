@@ -47,7 +47,7 @@ module.exports = {
       include: /src/,
       use: [
         'style-loader',
-        'css-loader'
+        'css-loader?modules'
       ]
     }]
   }
