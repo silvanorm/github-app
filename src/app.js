@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import ajax from '@fdaciuk/ajax'
 
-import AppContent from './components/app-content'
+import AppContent from 'components/app-content'
 
 class App extends Component {
   constructor () {

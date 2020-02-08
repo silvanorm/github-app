@@ -1,22 +1,32 @@
 {
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --config webpack.prod.config -p",
+    "test": "jest --coverage",
+    "test:watch": "npm test -- --watch",
+    "build": "cross-env NODE_ENV=production webpack --progress --config webpack/webpack.prod.js -p",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
-    "@storybook/addon-actions": "^5.3.8",
-    "@storybook/addon-links": "^5.3.8",
-    "@storybook/addons": "^5.3.8",
-    "@storybook/react": "^5.3.8",
+    "@storybook/addon-actions": "^5.3.12",
+    "@storybook/addon-links": "^5.3.12",
+    "@storybook/addons": "^5.3.12",
+    "@storybook/react": "^5.3.12",
+    "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
+    "jest-cli": "^25.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "react-hot-loader": "^4.12.17",
     "standard": "^14.3.1",
@@ -25,6 +35,7 @@
     "webpack-cli": "^3.3.10",
     "webpack-dashboard": "^3.2.0",
     "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2",
     "webpack-validator": "^3.0.1"
   },
   "dependencies": {
