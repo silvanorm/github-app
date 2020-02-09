@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import pagination from '../../utils/pagination'
 import Page from './page'
 
+import './style.css'
+
 const Pagination = ({ total, activePage, pageLink, onClick }) => (
   <ul>
     {pagination({ total, activePage }).map((page, index) => (

@@ -9,9 +9,9 @@ const HtmlPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
 module.exports = {
-  mode: 'development',
-
   devtool: 'source-map',
+
+  mode: 'development',
 
   entry: [
     'react-hot-loader/patch',
@@ -57,7 +57,8 @@ module.exports = {
   resolve: {
     alias: {
       src: path.join(__dirname, 'src'),
-      components: path.join(__dirname, 'src', 'components')
+      components: path.join(__dirname, 'src', 'components'),
+      utils: path.join(__dirname, 'src', 'utils')
     }
   }
 }
