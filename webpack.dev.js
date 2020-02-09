@@ -44,12 +44,12 @@ module.exports = {
         loader: 'babel-loader'
       }
     }, {
-      test: /\.css$/,
+      test: /\.css$/i,
       exclude: /node_modules/,
       include: /src/,
       use: [
         'style-loader',
-        'css-loader?modules'
+        'css-loader'
       ]
     }]
   },

@@ -8,9 +8,9 @@ import Page from './page'
 import './style.css'
 
 const Pagination = ({ total, activePage, pageLink, onClick }) => (
-  <ul>
+  <ul className='pagination'>
     {pagination({ total, activePage }).map((page, index) => (
-      <li key={index} style={activePage === page ? { color: 'red' } : null}>
+      <li key={index} className={`pagination-item ${activePage === page ? 'active' : ''}`}>
         <Page
           page={page}
           pageLink={pageLink.replace('%page%', page)}
